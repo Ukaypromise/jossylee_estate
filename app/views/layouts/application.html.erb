@@ -10,11 +10,20 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= render "shared/navigation"%>
-      <%= yield %>
+  <body class="flex flex-col min-h-screen m-0">
+    <main class="flex-1">
+        <% if user_signed_in? %>
+          <%= render "shared/navigation" %>
+        <% end %>
+          <%= render "shared/alerts" %>
+        <div class="flex mx-auto  flex-col justify-center lg:px-8">
+          <%= yield %>
+        </div>
     </main>
+      <% if user_signed_in? %>
+        <footer class="flex-shrink mt-4">
+          <%= render "shared/footer"%>
+        </footer>
+      <% end %>
   </body>
 </html>
