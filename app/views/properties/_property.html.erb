@@ -1,0 +1,57 @@
+<div id="<%= dom_id property %>">
+
+  <% property.images.each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= property.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= property.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Property type:</strong>
+    <%= property.property_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= property.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Price:</strong>
+    <%= property.price %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Plot size:</strong>
+    <%= property.plot_size %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Property status:</strong>
+    <%= property.property_status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Availability:</strong>
+    <%= property.availability %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Owner agent:</strong>
+    <%= property.owner_agent %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this property", property, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this property', edit_property_path(property), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

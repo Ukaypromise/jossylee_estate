@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  property_type: MyString
+  location: MyString
+  price: 9.99
+  plot_size: 1
+  property_status: MyString
+  availability: 2023-09-27
+  owner_agent: MyString
+
+two:
+  name: MyString
+  description: MyText
+  property_type: MyString
+  location: MyString
+  price: 9.99
+  plot_size: 1
+  property_status: MyString
+  availability: 2023-09-27
+  owner_agent: MyString
