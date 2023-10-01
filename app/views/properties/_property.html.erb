@@ -1,57 +1,25 @@
-<div id="<%= dom_id property %>">
 
-  <% property.images.each do |image| %>
-    <%= image_tag image %>
-  <% end %>
+      <div id="<%= dom_id property %>">
+        <div class="relative">
+          <div class="relative h-72 w-full overflow-hidden rounded-lg">
+            <%= image_tag property.images.first, class:"h-full w-full object-cover object-center", alt:"property" %>
+          </div>
+          <div class="relative mt-4">
+            <%=link_to property_path(property) do %>
+            <h3 class="text-sm font-medium text-gray-900"><%= property.name %></h3>
+            <% end %>
+            <p class="mt-1 text-sm text-gray-500"><%= property.location %></p>
+            <p class="relative text-sm text-gray-500"><%= property.plot_size %>msq</p>
+          </div>
+          <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+            <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+            <p class="relative text-lg font-semibold text-white">N<%= property.price %></p>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a href="#" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to bag<span class="sr-only">, Zip Tote Basket</span></a>
+        </div>
+      </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= property.name %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= property.description %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Property type:</strong>
-    <%= property.property_type %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
-    <%= property.location %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= property.price %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Plot size:</strong>
-    <%= property.plot_size %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Property status:</strong>
-    <%= property.property_status %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Availability:</strong>
-    <%= property.availability %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Owner agent:</strong>
-    <%= property.owner_agent %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this property", property, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this property', edit_property_path(property), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
