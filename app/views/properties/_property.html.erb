@@ -2,7 +2,11 @@
       <div id="<%= dom_id property %>">
         <div class="relative">
           <div class="relative h-72 w-full overflow-hidden rounded-lg">
-            <%= image_tag property.images.first, class:"h-full w-full object-cover object-center", alt:"property" %>
+          <% if property.images.present? %>
+            <%= image_tag property.images.first, class: "h-full w-full object-cover object-center", alt: "property" %>
+          <% else %>
+            <%= image_tag "unsplash_placeholder.jpg", class: "h-full w-full object-cover object-center", alt: "Unsplash Placeholder" %>
+          <% end %>
           </div>
           <div class="relative mt-4">
             <%=link_to property_path(property) do %>
