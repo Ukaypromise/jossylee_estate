@@ -21,10 +21,7 @@
           </div>
         </div>
         <div class="mt-6">
-          <%= form_for(current_user.cart, url: add_to_cart_cart_path(current_user.cart), method: :post) do |f| %>
-            <%= f.hidden_field :property_id, value: @property.id %>
-            <%= f.submit "Add to cart, #{@property.name}", class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
-          <% end %>
+        <%= button_to 'Add to Cart', add_to_cart_carts_path(property_id: property.id), method: :post, class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
         </div>
       </div>
 

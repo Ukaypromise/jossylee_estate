@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :properties
   resources :cart do
-    member do
-      post "add_to_cart"
+    collection do
+      post "add_to_cart", to: "cart#add_to_cart", as: "add_to_cart"
       get "view_cart"
       delete "remove_from_cart"
     end

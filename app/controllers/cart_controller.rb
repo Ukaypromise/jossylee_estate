@@ -4,7 +4,7 @@ class CartController < ApplicationController
   def add_to_cart
     property = Property.find(params[:property_id])
     current_user.cart.update(property: property)
-    redirect_to cart_path
+    redirect_to properties_path 
   end
 
   def view_cart
