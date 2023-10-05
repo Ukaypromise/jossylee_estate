@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   resources :properties
+  resources :cart do
+    member do
+      post "add_to_cart"
+      get "view_cart"
+      delete "remove_from_cart"
+    end
+  end
   devise_for :users
-  get 'pages/home'
-  get 'pages/about'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "pages/home"
+  get "pages/about"
 
-  # Defines the root path route ("/")
   root "pages#home"
 end
