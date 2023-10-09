@@ -57,6 +57,26 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def add_to_cart
+    @property = Property.find(params[:property_id])
+    @user = current_user
+
+    if @user.current_order.nil?
+      # If the user doesn't have a current order, create a new one
+      @order = Order.create(user: @user)
+      @user.update(current_order: @order.id) # Update the current_order attribute with the new order's ID
+    else
+      # If the user has a current order, use it
+      @order = Order.find(@user.current_order)
+    end
+
+    # Create a new order item for the property and add it to the order
+    order_item = OrderItem.create(order: @order, property: @property)
+    # You can also update the quantity or other attributes of the order item here
+
+    # Redirect or render as needed
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
