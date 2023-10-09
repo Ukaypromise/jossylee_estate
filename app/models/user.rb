@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :properties, dependent: :destroy
-  has_one :cart
   enum role: {
     client: "client",
     marketer_partner: "marketer_partner",

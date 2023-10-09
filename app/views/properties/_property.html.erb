@@ -21,8 +21,7 @@
           </div>
         </div>
         <div class="mt-6">
-        <%= link_to "Add to Cart", add_to_cart_property_path(@property), method: :post %>
-        <%#= button_to 'Add to Cart', add_to_cart_carts_path(property_id: property.id), method: :post, class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
+        <%= button_to 'Add to Cart', line_items_path(property_id: property), method: :post, class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
         </div>
       </div>
 
