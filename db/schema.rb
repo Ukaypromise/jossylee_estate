@@ -57,16 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_102730) do
     t.index ["property_id"], name: "index_line_items_on_property_id"
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -96,10 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_102730) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "user"
-    t.integer "current_order"
-    t.bigint "current_order_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["current_order_id"], name: "index_users_on_current_order_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -109,5 +96,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_102730) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "properties"
   add_foreign_key "properties", "users"
-  add_foreign_key "users", "orders", column: "current_order_id"
 end
