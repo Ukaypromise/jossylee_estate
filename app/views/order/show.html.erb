@@ -1,0 +1,12 @@
+<div class="p-4">
+  <h1 class="font-bold text-4xl mb-4">Checkout Items</h1>
+  <p class="mb-2">Total cost to pay is: N<%= @order.total_price %></p>
+  
+  <% @order.orderables.each do |orderable| %>
+    <% property = orderable.property %>
+    <p class="mb-2">
+      <%= property.name %> * <%= orderable.quantity %> = N<%= property.price * orderable.quantity %>
+    </p>
+  <% end %>
+</div>
+
