@@ -4,6 +4,9 @@ class Property < ApplicationRecord
     has_many_attached :images
     has_many :line_items
 
+    has_many :orderables
+    has_many :orders, through: :orderables
+
     private
 
     def not_referenced_by_any_line_item

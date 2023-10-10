@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "order" do%>
+    <p>Cart</p>
+    <% if @order.orderables.count > 0%>
+        <%= render "order/orderables" %>
+        <p>Total: <%= @order.total_price %></p>
+    <%else%>
+        <p>Cart is empty</p>
+    <%end%>
+<%end%>

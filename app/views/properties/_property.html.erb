@@ -20,9 +20,13 @@
             <p class="relative text-lg font-semibold text-white">N<%= property.price %></p>
           </div>
         </div>
-        <div class="mt-6">
-        <%= button_to 'Add to Cart', line_items_path(property_id: property), method: :post, class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
-        </div>
+
+        <%= form_with(url: order_add_path) do |f|%>
+          <%=f.hidden_field :id, value:property.id %>
+          <%=f.number_field :quantity, value:1, min:1, max:1 %>
+          <%=f.submit "Add to Cart", class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
+        <%end%>
+
       </div>
 
 

@@ -2,8 +2,10 @@
 
 one:
   property: one
-  cart: one
+  order: one
+  quantity: 1
 
 two:
   property: two
-  cart: two
+  order: two
+  quantity: 1

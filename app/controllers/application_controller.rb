@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-  include CurrentCart
-  before_action :set_cart
+
+  before_action :set_render_order
+  before_action :initialize_order
   # after_action :verify_authorized, except: :index
   # after_action :verify_policy_scoped, only: :index
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -15,6 +16,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :update_allowed_parameters, if: :devise_controller?
   before_action :authenticate_user!
+
+  def set_render_order
+    @render_order = true
+  end
+
+  def initialize_order
+    @order ||= Order.find_by(id: session[:order_id])
+
+    if @order.nil?
+      @order = Order.create
+      session[:order_id] = @order.id
+    end
+  end
 
   protected
 
