@@ -1,3 +1,5 @@
+<%= turbo_frame_tag "orderable" do %>
+<% if @order.orderables.count > 0%>
 <% @order.orderables.each do|orderable| %>
     <% property= orderable.property %>
     <div id="<%= "cart-#{property.id}" %>">
@@ -8,11 +10,6 @@
             <p class="mt-1 text-sm text-gray-500"><%= property.location %></p>
             <p class="relative text-sm text-gray-500"><%= property.plot_size %>msq</p>
         </div>
-        <%= form_with(url: order_add_path) do |f|%>
-          <%=f.hidden_field :id, value:property.id %>
-          <%=f.number_field :quantity, value:orderable.quantity, min:0 %>
-          <%=f.submit "Add to Cart", class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
-        <%end%>
         <%= form_with(url: order_remove_path) do |f|%>
           <%=f.hidden_field :id, value:orderable.id %>
           <%=f.submit "X", class: "relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200" %>
@@ -20,4 +17,19 @@
 
         <strong>Total: <%= orderable.total %></strong>
     </div>
+<%end%>
+    <div class="p-4">
+  <h1 class="font-bold text-4xl mb-4">Checkout Items</h1>
+  <p class="mb-2">Total cost to pay is: N<%= @order.total_price %></p>
+  
+  <% @order.orderables.each do |orderable| %>
+    <% property = orderable.property %>
+    <p class="mb-2">
+      <%= property.name %> = N<%= property.price%>
+    </p>
+  <% end %>
+</div>
+<%else%>
+        <p>Cart is empty</p>
+  <%end%>
 <%end%>

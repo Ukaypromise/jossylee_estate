@@ -14,7 +14,7 @@
     <main class="flex-1">
         <% if user_signed_in? %>
           <%= render "shared/topnav" %>
-          <%= render partial: 'order/order' if @render_order%>
+          
         <% end %>
           <%= render "shared/alerts" %>
         <div class="flex mx-auto min-h-full flex-col justify-center lg:px-8">
