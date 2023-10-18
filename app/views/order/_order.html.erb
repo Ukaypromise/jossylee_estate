@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "order" do%>
     <div class="relative py-2">
           <div class="t-0 absolute left-3">
-            <p class="flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-5 text-xs text-white">
+            <p class="flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 <% if @order.orderables.count > 0%>
                     <%= @order.orderables.count%>
                 <%else%>
