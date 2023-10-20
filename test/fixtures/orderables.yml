@@ -3,9 +3,7 @@
 one:
   property: one
   order: one
-  quantity: 1
 
 two:
   property: two
   order: two
-  quantity: 1

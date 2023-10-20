@@ -3,7 +3,7 @@ class Orderable < ApplicationRecord
   belongs_to :order
 
   def total
-    property.price * quantity
+    property.price
   end
 
 end

@@ -57,6 +57,9 @@
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"block px-4 py-2 text-sm text-gray-700 no-underline"  %>
           </div>
         </div>
+        <%= link_to order_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" do %>
+          <%= render partial: 'order/order' %>
+        <% end %>
       </div>
     </div>
   </div>
