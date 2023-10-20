@@ -5,6 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# Create a default user
+user = User.create(
+  email: "promiseuka@gmail.com",
+  password: "password",
+  password_confirmation: "password",
+  role: "ceo",
+  confirmed_at: Time.now,
+)
+
 
 # Create 20 sample properties with images
 20.times do |i|
@@ -18,6 +27,6 @@
     property_status: "For Sale",
     availability: Date.today + (i * 5), # Adjust availability dates as needed
     owner_agent: "Real Estate Agency",
-    # user: user, # Associate the property with the user
+    user: user, # Associate the property with the user
   )
 end
