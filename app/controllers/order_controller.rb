@@ -1,4 +1,6 @@
 class OrderController < ApplicationController
+  before_action :set_order, only: [:add, :remove]
+
   def show
     @render_order = false
   end
@@ -25,7 +27,7 @@ class OrderController < ApplicationController
   end
 
   def remove
-    Orderable.find_by(id: params[:id]).destroy
+    Orderable.find_by(id: params[:id], order_id: @order.id).destroy
 
     respond_to do |format|
       format.turbo_stream do
@@ -41,6 +43,16 @@ class OrderController < ApplicationController
                  ),
                ]
       end
+    end
+  end
+
+  private
+
+  def set_order
+    @order = current_user.orders.find_by(id: session[:order_id])
+    unless @order
+      @order = current_user.orders.create
+      session[:order_id] = @order.id
     end
   end
 end
