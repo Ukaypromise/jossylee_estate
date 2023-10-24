@@ -1,16 +1,15 @@
 class User < ApplicationRecord
   has_many :properties, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :order_items, dependent: :destroy
   enum role: {
-    client: "client",
-    marketer_partner: "marketer_partner",
-    manager: "manager",
-    director: "director",
-    ceo: "ceo",
+    customer: "customer",
+    admin: "admin",
   }
 
   after_initialize do
     if self.new_record?
-      self.role ||= :client
+      self.role ||= :admin
     end
   end
 

@@ -52,7 +52,7 @@
                       <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                         <span class="sr-only">Angled view</span>
                         <span class="absolute inset-0 overflow-hidden rounded-md">
-                          <% if property.images.present? %>
+                          <% if property.images.second.present? %>
                             <%= image_tag property.images.second, class: "h-full w-full object-cover object-center", alt: "property" %>
                           <% else %>
                             <%= image_tag "unsplash_placeholder.jpg", class: "h-full w-full object-cover object-center", alt: "Unsplash Placeholder" %>
@@ -64,8 +64,8 @@
                       <button id="tabs-1-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-1-panel-1" role="tab" type="button">
                         <span class="sr-only">Angled view</span>
                         <span class="absolute inset-0 overflow-hidden rounded-md">
-                          <% if property.images.present? %>
-                            <%= image_tag property.images.last, class: "h-full w-full object-cover object-center", alt: "property" %>
+                          <% if property.images.third.present? %>
+                            <%= image_tag property.images.third, class: "h-full w-full object-cover object-center", alt: "property" %>
                           <% else %>
                             <%= image_tag "unsplash_placeholder.jpg", class: "h-full w-full object-cover object-center", alt: "Unsplash Placeholder" %>
                           <% end %>
