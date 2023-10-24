@@ -46,14 +46,37 @@ class OrderController < ApplicationController
     end
   end
 
+  # def checkout
+  #   @order = Order.find_by(id: session[:order_id])
+  #   @order.orderables.destroy_all
+  #   tracking_number = SecureRandom.hex(10)
+  #   session[:order_id] = nil
+  #   OrderItem.create(property: @order.orderables, user: current_user, tracking_number: tracking_number)
+  #   redirect_to order_order_reciept_path
+  # end
+
   def checkout
     @order = Order.find_by(id: session[:order_id])
-    @order.orderables.destroy_all
-    session[:order_id] = nil
-    redirect_to order_order_reciept_path
+    tracking_number = SecureRandom.hex(10)
+    if @order
+      # Create and save order items for the user
+      @order.orderables.each do |orderable|
+        OrderItem.create(property: orderable.property, user: current_user, tracking_number: tracking_number)
+      end
+
+      # Clear the order
+      @order.orderables.destroy_all
+
+      session[:order_id] = nil
+      redirect_to order_order_reciept_path
+    else
+      # Handle the case where the order is not found
+      redirect_to order_path
+    end
   end
 
   def order_reciept
+    @order_items = current_user.order_items
   end
 
   private
