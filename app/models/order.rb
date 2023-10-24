@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-    has_many :orderables
+    has_many :orderables, dependent: :destroy
     has_many :properties, through: :orderables
     belongs_to :user
 

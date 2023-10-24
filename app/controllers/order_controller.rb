@@ -46,6 +46,16 @@ class OrderController < ApplicationController
     end
   end
 
+  def checkout
+    @order = Order.find_by(id: session[:order_id])
+    @order.orderables.destroy_all
+    session[:order_id] = nil
+    redirect_to order_order_reciept_path
+  end
+
+  def order_reciept
+  end
+
   private
 
   def set_order

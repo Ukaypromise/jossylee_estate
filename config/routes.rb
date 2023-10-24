@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'order', to: 'order#show'
   post 'order/add'
   post 'order/remove'
-  
+  post 'order/checkout'
+  get 'order/order_reciept'
   resources :properties
   
 

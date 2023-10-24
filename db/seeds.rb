@@ -6,14 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # Create a default user
+
 user = User.create(
   email: "promiseuka@gmail.com",
+  first_name: "Promise",
+  last_name: "Uka",
   password: "password",
   password_confirmation: "password",
-  role: "ceo",
+  role: "admin",
   confirmed_at: Time.now,
 )
-
 
 # Create 20 sample properties with images
 20.times do |i|
@@ -22,8 +24,8 @@ user = User.create(
     description: "Description for Property #{i + 1}",
     property_type: "Residential",
     location: "Location #{i + 1}",
-    price: 150000 + (i * 1000),  # Adjust the prices as needed
-    plot_size: 1200 + (i * 100), # Adjust the plot sizes as needed
+    price: 150000 + (i * 5000),  # Adjust the prices as needed
+    plot_size: 1200 + (i * 150), # Adjust the plot sizes as needed
     property_status: "For Sale",
     availability: Date.today + (i * 5), # Adjust availability dates as needed
     owner_agent: "Real Estate Agency",
