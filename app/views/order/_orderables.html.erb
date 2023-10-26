@@ -103,15 +103,85 @@
               </dt>
               <dd class="text-sm font-medium text-gray-900">$8.32</dd>
             </div>
-            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+            <div class="flex items-center justify-between border-t border-b border-gray-200 pt-4 pb-4">
               <dt class="text-base font-medium text-gray-900">Order total</dt>
-              <dd class="text-base font-medium text-gray-900">N<%= @order.total_price %></dd>
+              <dd class="text-base font-medium text-gray-900 pb-4">N<%= @order.total_price %></dd>
             </div>
           </dl>
 
-          <div class="mt-6">
-            <%= button_to "Checkout", order_checkout_path, data:{turbo_frame:"_top"}, class:"w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"%>
+        <%= form_with url: order_checkout_path, data:{turbo_frame:"_top"} do |form| %>
+        <div class="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
+          <div>
+            <h3 id="contact-info-heading" class="text-lg font-medium text-gray-900 mt-6">Contact information</h3>
+
+            <div class="mt-6">
+              <%= form.label :email, class:"block text-sm font-medium text-gray-700"%>
+              <div class="mt-1">
+                <%= form.text_field :email, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+              </div>
+            </div>
           </div>
+
+          <div class="mt-10">
+
+            <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
+              <div class="col-span-3 sm:col-span-4">
+                <%= form.label :fullname, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :full_name, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+
+              <div class="col-span-3 sm:col-span-4">
+                <%= form.label :phone, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :phone, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <h3 id="shipping-heading" class="text-lg font-medium text-gray-900">Address</h3>
+
+            <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+              <div class="sm:col-span-3">
+                <%= form.label :address, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :address, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+
+              <div>
+                <%= form.label :city, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :city, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+
+              <div>
+                <%= form.label :state, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :state, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+
+              <div>
+                <%= form.label :postal_code, class:"block text-sm font-medium text-gray-700"%>
+                <div class="mt-1">
+                  <%= form.text_field :postal_code, required: true, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 flex justify-end border-t border-gray-200 pt-6">
+            <%= form.submit 'Checkout', class:"rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50" %>
+            <%#= button_to "Checkout", order_checkout_path, data:{turbo_frame:"_top"}, class:"rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"%>
+          </div>
+        </div>
+        <% end %>
         </section>
       </div>
     </div>
@@ -120,3 +190,5 @@
     <p class="text-xl font-semibold text-gray-600 mt-8 mb-8">Cart is empty</p>
   <%end%>
 <%end%>
+
+
