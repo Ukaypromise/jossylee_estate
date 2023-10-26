@@ -78,3 +78,9 @@ end
 gem "devise", "~> 4.9"
 
 gem "pundit", "~> 2.3"
+
+gem "aws-sdk-s3", "~> 1.136"
+
+gem "wicked_pdf", "~> 2.7"
+
+gem "wkhtmltopdf-binary"
