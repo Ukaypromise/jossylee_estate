@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'order/remove'
   post 'order/checkout'
   get 'order/order_reciept'
+  get 'order/download'
+  get 'order/preview'
   resources :properties
   
 

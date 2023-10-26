@@ -46,15 +46,6 @@ class OrderController < ApplicationController
     end
   end
 
-  # def checkout
-  #   @order = Order.find_by(id: session[:order_id])
-  #   @order.orderables.destroy_all
-  #   tracking_number = SecureRandom.hex(10)
-  #   session[:order_id] = nil
-  #   OrderItem.create(property: @order.orderables, user: current_user, tracking_number: tracking_number)
-  #   redirect_to order_order_reciept_path
-  # end
-
   def checkout
     @order = Order.find_by(id: session[:order_id])
     tracking_number = SecureRandom.hex(10)
@@ -77,6 +68,15 @@ class OrderController < ApplicationController
 
   def order_reciept
     @order_items = current_user.order_items
+  end
+
+  def download
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "jossylee_receipt", template: "order/download"
+      end
+    end
   end
 
   private
