@@ -8,9 +8,18 @@
 
       <dl class="mt-12 text-sm font-medium">
         <dt class="text-gray-900">Tracking number</dt>
-        <dd class="mt-2 text-indigo-600"> <%= OrderItem.last.tracking_number%> </dd>
+        <% if @order %>
+          <dd class="mt-2 text-indigo-600"> <%= @order.tracking_number%></dd>
+          <p>Order ID: <%= @order.id %></p>
+          <p>Email: <%= @order.email %></p>
+          <!-- Add more order details here -->
+        <% else %>
+          <p>Order not found.</p>
+        <% end %>
       </dl>
     </div>
+
+    
 
     <section aria-labelledby="order-heading" class="mt-10 border-t border-gray-200">
       <h2 id="order-heading" class="sr-only">Your order</h2>
