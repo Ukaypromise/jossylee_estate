@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # Create a default user
-
-user = User.create(
+User.destroy_all
+user_one = User.create(
   email: "promiseuka@gmail.com",
   first_name: "Promise",
   last_name: "Uka",
@@ -17,18 +17,29 @@ user = User.create(
   confirmed_at: Time.now,
 )
 
+user_two = User.create(
+  email: "brightmicheal21@gmail.com",
+  first_name: "Bright",
+  last_name: "Michael",
+  password: "password",
+  password_confirmation: "password",
+  role: "customer",
+  confirmed_at: Time.now,
+)
+
+Property.destroy_all
 # Create 20 sample properties with images
-20.times do |i|
+10.times do |i|
   property = Property.create(
-    name: "Property #{i + 1}",
-    description: "Description for Property #{i + 1}",
+    name: "5 Bedroom Bungalow #{i + 1}",
+    description: "This spacious 5-bedroom bungalow offers the perfect blend of comfort and style. With a total area of 2000 square feet, this home provides ample living space for a family. The property is located in a serene neighborhood, offering a peaceful and secure environment. The bungalow features modern amenities, including a spacious kitchen, a well-manicured garden, and a garage. Don't miss the opportunity to make this beautiful bungalow your new home.",
     property_type: "Residential",
-    location: "Location #{i + 1}",
-    price: 150000 + (i * 5000),  # Adjust the prices as needed
-    plot_size: 1200 + (i * 150), # Adjust the plot sizes as needed
-    property_status: "For Sale",
-    availability: Date.today + (i * 5), # Adjust availability dates as needed
-    owner_agent: "Real Estate Agency",
-    user: user, # Associate the property with the user
+    location: "Lekki, Lagos",
+    price: 250000 + (i * 10000),  # Adjust the prices as needed
+    plot_size: 1500 + (i * 200), # Adjust the plot sizes as needed
+    property_status: "sale",
+    availability: Date.today + (i * 7), # Adjust availability dates as needed
+    owner_agent: "Your Realty Partner",
+    user: user_one, # Associate the property with the user
   )
 end

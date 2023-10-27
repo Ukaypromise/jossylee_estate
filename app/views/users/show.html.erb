@@ -1,0 +1,20 @@
+<div class="mx-20 my-8">
+  <div class="border-b">
+    <nav aria-label="breadcrumb" class="my-6 font-medium flex text-slate-500 dark:text-slate-200 text-sm">
+      <ol class="flex flex-wrap items-center space-x-3">
+        <li>
+          <%= link_to "All Users", users_list_path, class: "hover:underline hover:text-slate-600 dark:hover:text-slate-400" %>
+        </li>
+        <li class="flex space-x-3">
+          <div class="flex items-center">
+            <span class="text-slate-300 dark:text-slate-500">/</span>
+          </div>
+          <span class="text-indigo-600 dark:text-indigo-500" aria-current="page">View User</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div>
+    <%= render @user %>
+  </div>
+</div>

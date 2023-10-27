@@ -80,7 +80,10 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: jossylee_estate_production
-  username: jossylee_estate
-  password: <%= ENV["JOSSYLEE_ESTATE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+# production:
+#   <<: *default
+#   database: jossylee_estate_production
+#   username: jossylee_estate
+#   password: <%= ENV["JOSSYLEE_ESTATE_DATABASE_PASSWORD"] %>

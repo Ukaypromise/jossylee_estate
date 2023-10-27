@@ -48,29 +48,43 @@ class OrderController < ApplicationController
 
   def checkout
     @order = Order.find_by(id: session[:order_id])
-    tracking_number = SecureRandom.hex(10)
+    random_number = SecureRandom.hex(4)
+    tracking_number = "JOSSYLEE" + random_number
     if @order
-      # Create and save order items for the user
-      @order.orderables.each do |orderable|
-        OrderItem.create(property: orderable.property, user: current_user, tracking_number: tracking_number)
+      if @order.update(
+        email: params[:email],
+        full_name: params[:full_name],
+        phone: params[:phone],
+        address: params[:address],
+        city: params[:city],
+        state: params[:state],
+        postal_code: params[:postal_code],
+        tracking_number: tracking_number,
+      )
+
+        # Clear the session
+        session[:order_id] = nil
+        redirect_to order_order_reciept_path(order: @order.id)
+      else
+        flash.now[:alert] = "Order update failed. Please check the form for errors."
+        redirect_to order_path
       end
-
-      # Clear the order
-      @order.orderables.destroy_all
-
-      session[:order_id] = nil
-      redirect_to order_order_reciept_path
     else
       # Handle the case where the order is not found
+      flash.now[:alert] = "Order not found."
       redirect_to order_path
     end
   end
 
   def order_reciept
-    @order_items = current_user.order_items
+    @current_user = current_user
+    @order = Order.find_by(id: params[:order])
   end
 
   def download
+    @current_user = current_user
+    @order = Order.find_by(id: params[:order])
+    puts"This is the order we are looking for: #{@order}"
     respond_to do |format|
       format.html
       format.pdf do
@@ -87,5 +101,9 @@ class OrderController < ApplicationController
       @order = current_user.orders.create
       session[:order_id] = @order.id
     end
+  end
+
+  def order_params
+    params.require(:order).permit(:email, :full_name, :phone, :address, :city, :state, :postal_code, :tracking_number)
   end
 end
