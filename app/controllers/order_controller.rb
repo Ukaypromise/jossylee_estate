@@ -46,35 +46,10 @@ class OrderController < ApplicationController
     end
   end
 
-  # def checkout
-  #   @order = Order.find_by(id: session[:order_id])
-  #   puts @order
-  #   tracking_number = SecureRandom.hex(10)
-  #   if @order
-  #     # Update the order with tracking number the passed in data from the form
-  #     @order.update(
-  #       email: params[:order][:email],
-  #       full_name: params[:order][:full_name],
-  #       phone: params[:order][:phone],
-  #       address: params[:order][:address],
-  #       city: params[:order][:city],
-  #       state: params[:order][:state],
-  #       postal_code: params[:order][:postal_code],
-  #       tracking_number: tracking_number,
-  #     )
-  #     puts @order
-  #     # Clear the session
-  #     session[:order_id] = nil
-  #     redirect_to order_order_reciept_path
-  #   else
-  #     # Handle the case where the order is not found
-  #     redirect_to order_path
-  #   end
-  # end
-
   def checkout
     @order = Order.find_by(id: session[:order_id])
-    tracking_number = SecureRandom.hex(10)
+    random_number = SecureRandom.hex(4)
+    tracking_number = "JOSSYLEE" + random_number
     if @order
       if @order.update(
         email: params[:email],
@@ -86,9 +61,10 @@ class OrderController < ApplicationController
         postal_code: params[:postal_code],
         tracking_number: tracking_number,
       )
+
         # Clear the session
         session[:order_id] = nil
-        redirect_to order_order_reciept_path(order: @order)
+        redirect_to order_order_reciept_path(order: @order.id)
       else
         flash.now[:alert] = "Order update failed. Please check the form for errors."
         redirect_to order_path
@@ -101,10 +77,14 @@ class OrderController < ApplicationController
   end
 
   def order_reciept
+    @current_user = current_user
     @order = Order.find_by(id: params[:order])
   end
 
   def download
+    @current_user = current_user
+    @order = Order.find_by(id: params[:order])
+    puts"This is the order we are looking for: #{@order}"
     respond_to do |format|
       format.html
       format.pdf do
