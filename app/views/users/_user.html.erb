@@ -1,0 +1,45 @@
+<div class="px-4 mt-4 sm:px-0">
+      <h3 class="text-3xl font-semibold leading-7 py-2 text-gray-900"> Profile Details</h3>
+      <p class="pb-2 mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details of <%= user.email%>.</p>
+  </div>
+  <div id="<%= dom_id user %>" class="md:mx-20 p-12 mt-6 border-t border-gray-100 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+    <div class="px-2 mx-auto">
+      <dl class=" sm:divide-y sm:divide-gray-200">
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">First Name</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.first_name%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Last Name</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.last_name%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Email Address</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.email%></dd>
+        </div>
+
+        <% if user.orders.present?%>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Phone Number</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.orders&.last.phone%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Address</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.orders&.last.address%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">City</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.orders&.last.city%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">State</dt>
+          <dd class=" mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.orders&.last.state%></dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Postal Code</dt>
+          <dd class="  mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user&.orders&.last.postal_code%></dd>
+        </div>
+        <%end%>
+      </dl>
+    </div>
+  </div>
