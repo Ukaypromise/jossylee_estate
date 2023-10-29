@@ -23,9 +23,11 @@
         <div data-controller="active-link" class=" hidden sm:ml-6 sm:block">
           <div data-active-link-target="link", class="data-target flex space-x-4 pt-2" >
             <%= link_to "Home", root_path , data: { active_link_target: "link" }, class:"  hover:bg-Darkest-Baby-Blue text-white rounded-md px-3 py-2 text-sm font-medium" %>
-                        <%= link_to "Properties", properties_path, data: { active_link_target: "link" }, class: "text-white hover:bg-Darkest-Baby-Blue hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+            <%= link_to "Properties", properties_path, data: { active_link_target: "link" }, class: "text-white hover:bg-Darkest-Baby-Blue hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
             <%= link_to "About", pages_about_path, data: { active_link_target: "link" }, class: "text-white hover:bg-Darkest-Baby-Blue hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
-            <%= link_to "Customers", users_list_path, data: { active_link_target: "link" }, class: "text-white hover:bg-Darkest-Baby-Blue hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+            <% if current_user.role == "admin"%>
+              <%= link_to "Customers", users_list_path, data: { active_link_target: "link" }, class: "text-white hover:bg-Darkest-Baby-Blue hover:text-white rounded-md px-3 py-2 text-sm font-medium" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -45,10 +47,15 @@
 
           <div data-toggle-target="toggleable" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <%= link_to 'Home', root_path, class:"block px-4 py-2 text-sm text-gray-700 no-underline" %>
-                          <%= link_to "Properties", properties_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
+              <%= link_to "Properties", properties_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
               <%= link_to "About", pages_about_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
-              <%= link_to "Customers", users_list_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"block px-4 py-2 text-sm text-gray-700 no-underline"  %>
+              <% if current_user.role == "admin"%>
+                <%= link_to "Customers", users_list_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
+              <% end %>
+              <% if user_signed_in? %>
+                <%= link_to "Profile", edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 no-underline" %>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"block px-4 py-2 text-sm text-gray-700 no-underline"  %>
+              <% end %>
           </div>
         </div>
         
@@ -59,9 +66,11 @@
   <div data-mobile-target="mobilenav" data-controller="active-link" class="hidden sm:hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
         <%= link_to "Home", root_path, data: { active_link_target: "link" }, class:" text-white block rounded-md px-3 py-2 text-base font-medium" %>
-                <%= link_to "Properties", properties_path,data: { active_link_target: "link" }, class:"text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" %>
+        <%= link_to "Properties", properties_path,data: { active_link_target: "link" }, class:"text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" %>
         <%= link_to "About", pages_about_path, data: { active_link_target: "link" }, class:"text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" %>
-        <%= link_to "Customers", users_list_path,data: { active_link_target: "link" }, class:"text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" %>
+        <% if current_user.role == "admin"%>
+          <%= link_to "Customers", users_list_path,data: { active_link_target: "link" }, class:"text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" %>
+        <% end %>
     </div>
   </div>
 </nav>

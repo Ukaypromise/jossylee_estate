@@ -1,6 +1,5 @@
 class OrderController < ApplicationController
   before_action :set_order, only: [:add, :remove]
-
   def show
     @render_order = false
   end
@@ -96,10 +95,14 @@ class OrderController < ApplicationController
   private
 
   def set_order
-    @order = current_user.orders.find_by(id: session[:order_id])
-    unless @order
-      @order = current_user.orders.create
-      session[:order_id] = @order.id
+    if current_user
+      @order = current_user.orders.find_by(id: session[:order_id])
+      unless @order
+        @order = current_user.orders.create
+        session[:order_id] = @order.id
+      end
+    else
+      redirect_to new_user_session_path
     end
   end
 
