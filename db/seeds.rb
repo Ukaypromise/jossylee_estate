@@ -36,7 +36,7 @@ user_three = User.create(
   role: "customer",
   confirmed_at: Time.now,
 )
-Propert.destroy_all
+Property.destroy_all
 # Create 20 sample properties with images
 10.times do |i|
   property = Property.create(
