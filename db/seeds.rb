@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # Create a default user
-User.destroy_all
 user_one = User.create(
   email: "promiseuka@gmail.com",
   first_name: "Promise",
@@ -27,7 +26,16 @@ user_two = User.create(
   confirmed_at: Time.now,
 )
 
-Property.destroy_all
+user_three = User.create(
+  email: "bright@gmail.com",
+  first_name: "Bright",
+  last_name: "Michael",
+  password: "password",
+  password_confirmation: "password",
+  role: "customer",
+  confirmed_at: Time.now,
+)
+
 # Create 20 sample properties with images
 10.times do |i|
   property = Property.create(
