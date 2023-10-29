@@ -23,7 +23,7 @@ user_two = User.create(
   last_name: "Michael",
   password: "password",
   password_confirmation: "password",
-  role: "customer",
+  role: "admin",
   confirmed_at: Time.now,
 )
 
