@@ -17,7 +17,7 @@
           </div>
           <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
             <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-            <p class="relative text-lg font-semibold text-white">N<%= property.price %></p>
+            <p class="relative text-lg font-semibold text-white"><%= number_to_currency(property.price, unit: '₦')%></p>
           </div>
         </div>
 
@@ -132,7 +132,6 @@
 
                     <div class="space-y-6 text-base text-gray-700">
                       <%= property.description %>
-                      <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
                     </div>
                   </div>
 

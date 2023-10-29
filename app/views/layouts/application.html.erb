@@ -12,19 +12,15 @@
   </head>
   <body class="flex flex-col min-h-screen m-0">
     <main class="flex-1">
-        <% if user_signed_in? %>
           <%= render "shared/topnav" %>
           
-        <% end %>
           <%= render "shared/alerts" %>
         <div class="flex mx-auto min-h-full flex-col justify-center lg:px-8">
           <%= yield %>
         </div>
     </main>
-      <% if user_signed_in? %>
         <footer class="flex-shrink mt-4">
           <%= render "shared/footer"%>
         </footer>
-      <% end %>
   </body>
 </html>

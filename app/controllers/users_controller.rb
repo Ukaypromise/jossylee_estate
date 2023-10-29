@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_users, only: %i[promote_user]
 
   def list
-    # authorize :user, :list?
+     authorize :user, :list?
     @users = User.order(created_at: :desc)
   end
 
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def promote_user
+    authorize :user, :promote_user?
     @user = User.find(params[:id])
 
     if params[:user].present? && params[:user][:role].present?

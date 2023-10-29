@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  pundit:
+    default: 'You are not authorized to perform this action.'
+    user_policy:
+      destroy?: 'You are not authorized to delete this firm.'

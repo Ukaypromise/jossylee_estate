@@ -5,9 +5,13 @@
     </div>
     <div class="mt-2 px-8">
       <div class="inline-block px-2">
+        <% if current_user.role == "admin"%>
         <%= button_to 'Delete', property_path(@property), method: :delete, class: "rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        <% end %>
       </div>
+      <% if current_user.role == "admin"%>
         <%= link_to 'Edit', edit_property_path(@property), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      <% end %>
         <%= link_to 'Go back', properties_path, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
 
       </div>
