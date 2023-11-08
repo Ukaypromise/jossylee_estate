@@ -1,4 +1,10 @@
 <div id="<%= dom_id project %>">
+
+    <% if project.images.present? %>
+    <%= image_tag project.images.first, class: "h-full w-full object-cover object-center", alt: "property" %>
+  <% else %>
+    <%= image_tag "unsplash_placeholder.jpg", class: "h-full w-full object-cover object-center", alt: "Unsplash Placeholder" %>
+  <% end %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= project.name %>
