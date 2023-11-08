@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "order/download"
   get "order/preview"
   resources :properties
+  resources :projects
 
   get "/users/list" => "users#list"
   devise_for :users
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
       get "user_orders", to: "users#user_orders"
     end
   end
-  # put "users/:id/update_user_role", to: "users#update_user_role", as: "update_user_role"
 
   get "pages/home"
   get "pages/about"

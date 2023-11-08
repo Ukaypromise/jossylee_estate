@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_194053) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_08_201350) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_194053) do
   end
 
   create_table "orderables", force: :cascade do |t|
-    t.bigint "property_id", null: false
+    t.bigint "property_id"
     t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,6 +64,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_194053) do
     t.string "postal_code"
     t.string "tracking_number"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -107,5 +120,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_194053) do
   add_foreign_key "orderables", "orders"
   add_foreign_key "orderables", "properties"
   add_foreign_key "orders", "users"
+  add_foreign_key "projects", "users"
   add_foreign_key "properties", "users"
 end

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :properties, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :order_items, dependent: :destroy
+  has_many :projects, dependent: :destroy
   enum role: {
     customer: "customer",
     admin: "admin",
