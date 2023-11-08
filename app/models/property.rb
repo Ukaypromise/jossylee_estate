@@ -4,7 +4,7 @@ class Property < ApplicationRecord
   has_many_attached :images
   has_many :order_items
 
-  has_many :orderables
+  has_many :orderables, dependent: :destroy
   has_many :orders, through: :orderables
 
   private
