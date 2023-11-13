@@ -7,6 +7,16 @@ class Property < ApplicationRecord
   has_many :orderables, dependent: :destroy
   has_many :orders, through: :orderables
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :property_type, presence: true
+  validates :location, presence: true
+  validates :price, presence: true
+  validates :plot_size, presence: true
+  validates :property_status, presence: true
+  validates :availability, presence: true
+  validates :owner_agent, presence: true
+
   private
 
   def set_user_id
