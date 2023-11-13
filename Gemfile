@@ -84,3 +84,4 @@ gem "aws-sdk-s3", require: false
 gem "wicked_pdf", "~> 2.7"
 
 gem "wkhtmltopdf-binary"
+gem 'resend'
