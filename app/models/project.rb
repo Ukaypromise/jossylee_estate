@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
-  enum category: { construction: "construction", seminar: "seminar", conference: "conference", training: "training", marketing: "marketing" }
+  enum category: { construction: "Construction", seminar: "Seminar", conference: "Conference", training: "Training", marketing: "Marketing" }
   has_many_attached :images
+  has_rich_text :description
 
   validates :name, presence: true
   validates :description, presence: true

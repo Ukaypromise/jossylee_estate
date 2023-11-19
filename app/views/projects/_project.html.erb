@@ -13,7 +13,7 @@
           <div>
             <div class="flex items-center gap-x-4 text-xs">
               <time datetime="2020-03-16" class="text-gray-500"><%= project&.start_date.strftime("%B %d, %Y") %> - <%= project&.end_date.strftime("%B %d, %Y") %></time>
-              <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"><%= project&.category.upcase %></a>
+              <p class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"><%= project&.category %></p>
             </div>
             <div class="group relative max-w-xl">
               
@@ -24,9 +24,14 @@
                 <% end %>
               </h3>
               
-              <p class="mt-5 text-sm leading-6 text-gray-600"><%= project&.description %></p>
+              <% project_descr_words = project.description.to_plain_text.split(' ') %>
+                <% truncated_body = project_descr_words[0..15].join(' ') %>
+                <%= truncated_body %>
+                <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                    <%= link_to "Read More", project, class:"text-sm no-underline" %>
+                </span>
             </div>
-            <div class="mt-6 flex border-t border-gray-900/5 pt-6">
+            <div class="mt-2 flex border-b pb-2 border-gray-900/5 pt-6">
               <div class="relative flex items-center gap-x-4">
                 <div class="text-sm leading-6">
                   <p class="font-semibold text-gray-900">
