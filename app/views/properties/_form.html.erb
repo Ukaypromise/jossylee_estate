@@ -26,28 +26,28 @@
     </div>
 
   <div class="my-5">
-    <%= form.label :name %>
+    <%= form.label "Name of Property", class:"font-bold" %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Describe in detail", class:"font-bold mb-2" %>
+    <%= form.rich_text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :property_type %>
+    <%= form.label :property_type, class:"font-bold mb-2" %>
     <%= form.select :property_type, [['Landed Property', 'landed_property'], ['Building', 'building']], {prompt: 'Select Type'}, class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :location %>
+    <%= form.label "Property Location", class:"font-bold mb-2" %>
     <%= form.text_field :location, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :price %>
-    <%= form.text_field :price, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Price ₦" %>
+    <%= form.number_field :price, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

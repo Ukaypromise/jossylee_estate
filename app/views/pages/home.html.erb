@@ -43,7 +43,12 @@
                     <%= property.name %>
                   <% end %>
               </h3>
-              <p class="mt-5 text-sm leading-6 text-gray-600"><%= property.description %></p>
+              <% property_descr_words = property.description.to_plain_text.split(' ') %>
+                <% truncated_body = property_descr_words[0..15].join(' ') %>
+                <%= truncated_body %>
+                <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                    <%= link_to "View property", property, class:"text-sm no-underline" %>
+                </span>
             </div>
             <div class="mt-6 flex border-t border-b border-gray-900/5 pt-6 pb-2">
               <div class="relative flex items-center gap-x-4">
@@ -83,31 +88,21 @@
       <div>
         <h3 class="border-l border-indigo-600 pl-6 font-semibold text-gray-900">Abuja</h3>
         <address class="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-          <p>4556 Brendan Ferry</p>
-          <p>Los Angeles, CA 90210</p>
+          <p>Suite 100,De Avalon Plaza,Plot 483, Ajose Adeogun Street,</p>
+          <p>Obafemi Awolowo Way, Opposite Kia motors, Utako District, Abuja.</p>
+          <p>Contact: 08036001351</p>
+          <p>Contact: 08078885743</p>
         </address>
       </div>
       <div>
         <h3 class="border-l border-indigo-600 pl-6 font-semibold text-gray-900">Port Harcourt</h3>
         <address class="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-          <p>886 Walter Street</p>
-          <p>New York, NY 12345</p>
+          <p>East/West Road Rumuosi. </p>
+          <p>Contact: 07068583342</p>
+          <p>Contact: 09014991712</p>
         </address>
       </div>
-      <div>
-        <h3 class="border-l border-indigo-600 pl-6 font-semibold text-gray-900">Ebonyi</h3>
-        <address class="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-          <p>7363 Cynthia Pass</p>
-          <p>Toronto, ON N3Y 4H8</p>
-        </address>
-      </div>
-      <div>
-        <h3 class="border-l border-indigo-600 pl-6 font-semibold text-gray-900">London</h3>
-        <address class="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-          <p>114 Cobble Lane</p>
-          <p>London N1 2EF</p>
-        </address>
-      </div>
+
     </div>
   </div>
 </div>
