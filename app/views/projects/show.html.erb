@@ -1,11 +1,27 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <%= render @project %>
 
-    <%= link_to 'Edit this project', edit_project_path(@project), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this project', project_path(@project), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+
+
+<div class="mx-auto md:w-2/3 w-full">
+
+  <div class="mx-auto">
+    <div class="mt-12">
+      <%= render @project %>
     </div>
-    <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="flex justify-end space-x-4 mt-2 px-8">
+    <% if user_signed_in? && current_user.role == "admin"%>
+      <div class="inline-block">
+        <%= button_to 'Delete', project_path(@project), method: :delete, class: "rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      </div>
+    <% end %>
+    <% if user_signed_in? && current_user.role == "admin"%>
+      <div class="inline-block">
+        <%= link_to 'Edit', edit_project_path(@project), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      </div>
+    <% end %>
+    <div class="inline-block">
+      <%= link_to 'Go back', projects_path, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    </div>
   </div>
+  </div>
+  
 </div>
