@@ -21,6 +21,10 @@ module.exports = {
         "Burnt-Orange": "#F84C0B",
 
         "custom-green": "#009f9a",
+        
+        "red-custom": "#990101",
+        "deep-yellow": "#fab8b0",
+        "deep-navy-blue": "#000080",
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
