@@ -258,6 +258,8 @@ GEM
       kaminari (>= 1.1.0)
       railties (>= 4.2.0)
       sprockets-rails (>= 2.0.0)
+    trestle-search (0.4.3)
+      trestle (~> 0.9.0, >= 0.9.3)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -311,6 +313,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails
   trestle
+  trestle-search
   turbo-rails
   tzinfo-data
   web-console

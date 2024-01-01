@@ -3,6 +3,14 @@ Trestle.resource(:projects) do
     item :projects, icon: "fa fa-cart-plus"
   end
 
+  search do |query|
+    if query
+      Project.where("name ILIKE ?", "%#{query}%")
+    else
+      Project.all
+    end
+  end
+
   # Customize the table columns shown on the index view.
   #
   # table do
