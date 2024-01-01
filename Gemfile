@@ -85,3 +85,4 @@ gem "wicked_pdf", "~> 2.7"
 
 gem "wkhtmltopdf-binary"
 gem 'resend'
+gem 'trestle'
