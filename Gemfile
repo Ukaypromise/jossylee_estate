@@ -87,3 +87,4 @@ gem "wkhtmltopdf-binary"
 gem 'resend'
 gem 'trestle'
 gem 'trestle-search'
+gem 'trestle-auth'

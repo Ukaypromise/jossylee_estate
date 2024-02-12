@@ -1,6 +1,6 @@
 Trestle.resource(:projects) do
   menu do
-    item :projects, icon: "fa fa-cart-plus"
+    item :projects, icon: "fa fa-file-text-o"
   end
 
   search do |query|
