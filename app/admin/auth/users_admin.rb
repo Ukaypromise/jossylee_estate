@@ -10,6 +10,10 @@ Trestle.resource(:users, model: User, scope: Auth) do
       avatar_for(user)
     end
     column :email, link: true
+    column :first_name
+    column :last_name
+    column :created_at, align: :center, header: "Joined"
+    column :role, align: :center
     actions do |a|
       a.delete unless a.instance == current_user
     end
