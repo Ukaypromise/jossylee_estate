@@ -5,6 +5,12 @@ Trestle.configure do |config|
   #
   config.site_title = "Jossylee Estate"
 
+  config.before_action do |_controller|
+    if current_user && current_user.role != 'admin'
+      redirect_to '/', alert: 'You are not authorized to access this page'
+    end
+  end
+
   # Specify a custom image to be used in place of the site title for mobile and
   # expanded/desktop navigation. These images should be placed within your
   # asset paths, e.g. app/assets/images.
