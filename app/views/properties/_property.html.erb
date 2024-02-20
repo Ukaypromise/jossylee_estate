@@ -1,4 +1,4 @@
-      <% if params[:action] == "index" %>
+ <% if params[:action] == "index" %>
       <div id="<%= dom_id property %>">
         <div class="relative">
           <div class="relative h-72 w-full overflow-hidden rounded-lg">
@@ -77,7 +77,18 @@
                     <!-- Tab panel, show/hide based on tab state. -->
                     <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
                       <% if property.images.present? %>
-                        <%= image_tag property.images.first, class: "h-full w-full object-cover object-center sm:rounded-lg", alt: "property" %>
+                        <div class="swiper">
+                          <!-- Additional required wrapper -->
+                          <div class="swiper-wrapper">
+                            <% property.images.each do |image| %>
+                              <%= image_tag image, class:"swiper-slide h-full w-full object-cover object-center" %>
+                            <% end %>
+                          </div>
+                          
+                          <!-- If we need navigation buttons -->
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
+                        </div>
                       <% else %>
                         <%= image_tag "unsplash_placeholder.jpg", class: "h-full w-full object-cover object-center sm:rounded-lg", alt: "Unsplash Placeholder" %>
                       <% end %>

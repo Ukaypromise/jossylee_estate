@@ -5,9 +5,11 @@
       <% if params[:action] == "index" %>
        <article class="relative isolate flex flex-col gap-8 lg:flex-row">
           <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-            <% if project.images.present? %>
-            <%= image_tag project.images.first, alt:"project-image", class:"absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"%>
-            <%end%>
+            <% if project.attachments.first.content_type.start_with?("image") %>
+              <%= image_tag url_for(project.attachments.first), alt: "project-image", class: "absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" %>
+            <% else %>
+              <%= video_tag url_for(project.attachments.first), controls: true, autoplay: true, alt: "project-video", class: "absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" %>
+            <% end %>
             <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
           </div>
           <div>
@@ -50,8 +52,8 @@
       <% if params[:action] == "show" %>
       <article class="flex flex-col items-start justify-between">
         <div class="relative w-full">
-        <% if project.images.present? %>
-          <%= image_tag project.images.first, class: "aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]", alt: "property" %>
+        <% if project.attachments.present? %>
+          <%= image_tag project.attachments.first, class: "aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]", alt: "property" %>
         <% else %>
           <%= image_tag "unsplash_placeholder.jpg", class: "aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]", alt: "Unsplash Placeholder" %>
         <% end %>
