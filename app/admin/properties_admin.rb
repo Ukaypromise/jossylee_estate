@@ -3,6 +3,14 @@ Trestle.resource(:properties) do
     item :properties, icon: "fa fa-star"
   end
 
+  search do |query|
+    if query
+      Property.where("name ILIKE ?", "%#{query}%")
+    else
+      Property.all
+    end
+  end
+
   # Customize the table columns shown on the index view.
   #
   # table do
